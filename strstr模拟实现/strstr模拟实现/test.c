@@ -1,36 +1,46 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 
-#include<stdio.h>
+#include"KMP.h"
 
-char* my_strstr(const char* str1, const char* str2)
+char* my_strstr(const char* str1, const char* str2)//BFËã·¨
 {
-	const char* tmp = str1;
-	while (*str1)
+	assert(str1 && str2);
+	char* s1 = str1;
+	char* s2 = str2;
+	char* tmp = str1;
+	while (*tmp)
 	{
-		if (*str1 == *str2)
+		s1 = tmp;
+		s2 = str2;
+		while (*s1 == *s2 && *s1)
 		{
-			tmp = str1;
-			str1++;
-			str2++;
-			while (*str1 == *str2 && *str1)
-			{
-				str1++;
-				str2++;
-			}
-			if (*str2 == '\0')
-				return tmp;
-			else
-				str1 = tmp;
+			s1++;
+			s2++;
 		}
-		else
-			str1++;
+		if (*s2 == '\0')
+			return tmp;
+		tmp++;
 	}
 	return NULL;
 }
+
+
+char* my_strstr_KMP(const char* str1, const char* str2)//KMPËã·¨
+{
+	int ret = KMP(str1, str2, 0);
+	printf("%d\n", ret);
+	if (ret == -1)
+		return NULL;
+	else
+		return str1 + ret;
+}
+
+
 int main()
 {
-	char str1[10] = "abbbcdef";
-	char str2[10] = "bbc";
-	printf("%s", my_strstr(str1, str2));
+	char str1[30] = "ababcabcdabcde";
+	char str2[10] = "ab";
+	//printf("%s", my_strstr(str1, str2));
+	printf("%s", my_strstr_KMP(str1, str2));
 	return 0;
 }
