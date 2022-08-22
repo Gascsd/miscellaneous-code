@@ -6,12 +6,12 @@
 void TestSListPush()
 {
 	SListNode* plist = NULL;
-	//SListPushFront(&plist, 1);
-	//SListPushFront(&plist, 2);
-	//SListPushFront(&plist, 3);
-	//SListPushFront(&plist, 4);
-	//SListPushFront(&plist, 5);
-	//SListPrint(plist);
+	SListPushFront(&plist, 1);
+	SListPushFront(&plist, 2);
+	SListPushFront(&plist, 3);
+	SListPushFront(&plist, 4);
+	SListPushFront(&plist, 5);
+	SListPrint(plist);
 
 	SListPushBack(&plist, 1);
 	SListPushBack(&plist, 2);
@@ -55,15 +55,15 @@ void Test3()
 	SListPushBack(&plist, 4);
 	SListPushBack(&plist, 5);
 	SListPrint(plist);
-	SListNode* pos = SListFind(plist, 1);
+	SListNode* pos = SListFind(plist, 3);
 	if (pos)
 	{
 		printf("found it\n");
 	}
 	else
 		printf("not found it\n");
-
-	SListEraseAfter(&plist, pos);
+	SListInsertBefore(&plist, pos, 20);
+	//SListEraseAfter(&plist, pos);
 	SListPrint(plist);
 
 }

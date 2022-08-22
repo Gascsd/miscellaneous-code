@@ -116,6 +116,30 @@ void SListInsertAfter(SListNode* pos, SLTDateType x)
 	pos->next = newnode;
 }
 
+void SListInsertBefore(SListNode** pplist, SListNode* pos, SLTDateType x)
+{
+	assert(pplist);
+	assert(pos);
+
+	if (pos == *pplist)
+	{
+		SListPushFront(pplist, x);
+	}
+	else
+	{
+		SListNode* prev = *pplist;
+		while (prev->next != pos)
+		{
+			prev = prev->next;
+			assert(prev);//暴力检查pos传错了的情况
+		}
+
+		SListNode* newnode = BuySListNode(x);
+		prev->next = newnode;
+		newnode->next = pos;
+	}
+}
+
 void SListEraseAfter(SListNode** pplist, SListNode* pos)
 {
 	assert(pos);

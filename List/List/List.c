@@ -137,7 +137,6 @@ void ListInsert(ListNode* pos, LTDataType x)
 void ListErase(ListNode* pos)
 {
 	assert(pos);
-	
 	pos->_prev->_next = pos->_next;
 	pos->_next->_prev = pos->_prev;
 	free(pos);

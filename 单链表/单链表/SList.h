@@ -26,6 +26,8 @@ void SListPopFront(SListNode** pplist);
 SListNode* SListFind(SListNode* plist, SLTDateType x);
 // 单链表在pos位置之后插入x
 // 分析思考为什么不在pos位置之前插入？
+void SListInsertBefore(SListNode** pplist, SListNode* pos, SLTDateType x);
+
 void SListInsertAfter(SListNode* pos, SLTDateType x);
 // 单链表删除pos位置之后的值
 // 分析思考为什么不删除pos位置？

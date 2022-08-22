@@ -59,6 +59,10 @@ void TestList2()
 	ListPrint(plist);
 
 	ListErase(plist->_next->_next);
+	ListErase(plist->_next->_next);
+	ListErase(plist->_next->_next);
+	ListErase(plist->_next->_next);
+	ListErase(plist->_next->_next);
 	ListPrint(plist);
 
 }
