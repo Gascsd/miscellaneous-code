@@ -129,4 +129,30 @@ void HeapPrint(Heap* hp)
 	printf("\n");
 }
 
-
+// TopK问题：找出N个数里面最大/最小的前K个问题。
+// 比如：未央区排名前10的泡馍，西安交通大学王者荣耀排名前10的韩信，全国排名前10的李白。等等问题都是Topk问题，
+// 需要注意：
+// 找最大的前K个，建立K个数的小堆
+// 找最小的前K个，建立K个数的大堆
+void PrintTopK(int* a, int n, int k)
+{
+	//建立k个数的小堆
+	for (int j = (k - 2) / 2; j > 0; --j)
+	{
+		AdjustDown(a, k, j);
+	}
+	//继续遍历后面N-k个数
+	int val = 0;
+	for (int i = k; i < n; ++i)
+	{
+		if (a[i] > a[0])
+		{
+			Swap(&a[0], &a[i]);
+			AdjustDown(a, k, 0);
+		}
+	}
+	for (int i = 0; i < k; i++)
+	{
+		printf("%d ", a[i]);
+	}
+}
