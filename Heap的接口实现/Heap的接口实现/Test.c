@@ -45,9 +45,12 @@ void TestTopk()
 
 	PrintTopK(a, n, 10);
 }
+
+
 int main()
 {
 	//TestHeap();
-	TestTopk();
+	//TestTopk();
+
 	return 0;
 }

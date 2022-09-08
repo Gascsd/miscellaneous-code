@@ -156,3 +156,4 @@ void PrintTopK(int* a, int n, int k)
 		printf("%d ", a[i]);
 	}
 }
+
