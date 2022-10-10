@@ -5,7 +5,7 @@
 void TestHeap()
 {
 	Heap hp;
-	HeapCreate(&hp, NULL, 0);
+	HeapInit(&hp);
 	int arr[] = { 65,100,70,32,50,60 };
 	for (int i = 0; i < sizeof(arr) / sizeof(arr[0]); ++i)
 	{

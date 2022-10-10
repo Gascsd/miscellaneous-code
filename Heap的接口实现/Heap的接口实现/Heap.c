@@ -2,25 +2,24 @@
 #include"Heap.h"
 
 // 堆的构建
-void HeapCreate(Heap* hp, HPDataType* a, int n)
+void HeapInit(Heap* php)
 {
-	assert(hp);
-	hp->_a = NULL;
-	hp->_capacity = hp->_size = 0;
-
+	assert(php);
+	php->_a = NULL;
+	php->_capacity = php->_size = 0;
 }
 // 堆的销毁
-void HeapDestory(Heap* hp)
+void HeapDestory(Heap* php)
 {
-	free(hp);
-	free(hp->_a);
-	hp->_a = NULL;
-	hp = NULL;
+	free(php->_a);
+	free(php);
+	php->_a = NULL;
+	php = NULL;
 }
 // 堆的插入
 void Swap(HPDataType* p1, HPDataType* p2)
 {
-	HPDataType* tmp = *p1;
+	HPDataType tmp = *p1;
 	*p1 = *p2;
 	*p2 = tmp;
 }
@@ -46,7 +45,6 @@ void HeapPush(Heap* hp, HPDataType x)
 {
 	if (hp->_capacity == hp->_size)//检查堆容量，决定是否扩容
 	{
-
 		int newCapacity = hp->_capacity == 0 ? 4 : hp->_capacity * 2;
 		HPDataType* tmp = (HPDataType*)realloc(hp->_a, sizeof(HPDataType) * newCapacity);
 		if (tmp == NULL)
@@ -104,14 +102,13 @@ HPDataType HeapTop(Heap* hp)
 {
 	assert(hp);
 	assert(!HeapEmpty(hp));
-
 	return hp->_a[0];
 }
 // 堆的数据个数
 int HeapSize(Heap* hp)
 {
 	assert(hp);
-	return hp->_size + 1;
+	return hp->_size;
 }
 // 堆的判空
 int HeapEmpty(Heap* hp)
@@ -129,11 +126,11 @@ void HeapPrint(Heap* hp)
 	printf("\n");
 }
 
-// TopK问题：找出N个数里面最大/最小的前K个问题。
-// 比如：未央区排名前10的泡馍，西安交通大学王者荣耀排名前10的韩信，全国排名前10的李白。等等问题都是Topk问题，
-// 需要注意：
-// 找最大的前K个，建立K个数的小堆
-// 找最小的前K个，建立K个数的大堆
+ //TopK问题：找出N个数里面最大/最小的前K个问题。
+ //比如：未央区排名前10的泡馍，西安交通大学王者荣耀排名前10的韩信，全国排名前10的李白。等等问题都是Topk问题，
+ //需要注意：
+ //找最大的前K个，建立K个数的小堆
+ //找最小的前K个，建立K个数的大堆
 void PrintTopK(int* a, int n, int k)
 {
 	//建立k个数的小堆
@@ -156,4 +153,3 @@ void PrintTopK(int* a, int n, int k)
 		printf("%d ", a[i]);
 	}
 }
-

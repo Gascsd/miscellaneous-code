@@ -74,11 +74,8 @@ BTNode* BinaryTreeFind(BTNode* root, BTDataType x)
 	ret = BinaryTreeFind(root->_left, x);
 	if (ret != NULL)
 		return ret;
-
 	ret = BinaryTreeFind(root->_right, x);
-	if (ret != NULL)
-		return ret;
-	return NULL;
+	return ret;
 }
 // 二叉树前序遍历 
 void BinaryTreePrevOrder(BTNode* root)
@@ -139,7 +136,6 @@ void BinaryTreeLevelOrder(BTNode* root)
 				QueuePush(&q, front->_right);
 		}
 	}
-
 	QueueDestory(&q);
 }
 //判断二叉树是否是完全二叉树

@@ -15,7 +15,7 @@ typedef struct Heap
 }Heap;
 
 // 堆的构建
-void HeapCreate(Heap* hp, HPDataType* a, int n);
+void HeapInit(Heap* hp);
 // 堆的销毁
 void HeapDestory(Heap* hp);
 // 堆的插入

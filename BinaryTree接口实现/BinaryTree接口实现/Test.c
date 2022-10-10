@@ -30,3 +30,4 @@ int main()
 	BinaryTreeDestory(&root);
 	return 0;
 }
+
