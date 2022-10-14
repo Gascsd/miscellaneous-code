@@ -68,39 +68,25 @@ void ShellSort(int* a, int n)
 	}
 }
 
-////挖坑法
-//int PartSort1(int* a, int left, int right)
-//{
-//	int begin = 0, end = 0;
-//	int key = begin;
-//	while (left < right)
-//	{
-//		
-//
-//	}
-//}
-//
-//// 前后指针法
-//int PartSort2(int* a, int left, int right)
-//{
-//	//三数取中
-//
-//	//
-//	int prev = 0, cur = 1;
-//	int keyi = prev;
-//	while (cur <= right)
-//	{
-//		if (a[cur] < a[keyi])
-//		{
-//			++prev;
-//			Swap(&a[prev], &a[cur]);
-//		}
-//		cur++;
-//	}
-//	Swap(&a[prev], &a[keyi]);
-//}
+void SelectSort1(int* a, int n)
+{
+	int begin = 0;
+	while (begin < n)
+	{
+		int tmpi = begin;
+		for (int i = begin + 1; i < n; ++i)
+		{
+			if (a[i] < a[tmpi])
+			{
+				tmpi = i;
+			}
+		}
+		Swap(&a[tmpi], &a[begin]);
+		++begin;
+	}
+}
 
-void SelectSort(int* a, int n)
+void SelectSort(int* a, int n)//优化后版本
 {
 	int begin = 0, end = n - 1;
 	while (begin < end)
@@ -168,3 +154,149 @@ void HeapSort(int* a, int n)
 	}
 }
 
+void BubbleSort(int* a, int n)
+{
+	for (int j = 0; j < n; j++)
+	{
+		int flag = 1;
+		for (int i = 1; i < n - j; i++)
+		{
+			if (a[i - 1] > a[i])
+			{
+				Swap(&a[i - 1], &a[i]);
+				flag = 0;
+			}
+		}
+		if (flag)
+		{
+			break;
+		}
+	}
+}
+
+int GetMidIndex(int* a, int left, int right)
+{
+	int mid = left + (right - left) / 2;
+	if (a[left] > a[mid])
+	{
+		if (a[mid] > a[right])
+		{
+			return mid; 
+		}
+		else if (a[left] > a[right])
+		{
+			return right;
+		}
+		else
+			return left;
+	}
+	else//a[left] <= a[mid]
+	{
+		if (a[mid] < a[right])
+		{
+			return mid;
+		}
+		else if (a[left] > a[right])
+		{
+			return left;
+		}
+		else
+			return right;
+	}
+}
+
+//hoare版本单趟
+int part_sort1(int* a, int left, int right)
+{
+	int midi = GetMidIndex(a, left, right);
+	Swap(&a[midi], &a[left]);
+
+	int keyi = left;
+	while (left < right)
+	{
+		while (left < right && a[right] >= a[keyi])//R先走，找小于key的值停下
+		{
+			--right;
+		}
+		while (left < right && a[left] <= a[keyi])//L后走，找到大于key的值
+		{
+			++left;
+		}
+		//执行交换
+		Swap(&a[left], &a[right]);
+	}
+	Swap(&a[left], &a[keyi]);
+	return left;
+}
+int part_sort2(int* a, int left, int right)//挖坑法
+{
+	//三数取中
+	int midi = GetMidIndex(a, left, right);
+	Swap(&a[midi], &a[left]);
+
+	int key = a[left];
+	int hole = left;
+	while (left < right)
+	{
+		while (left < right && a[right] >= key)//右边找小的
+		{
+			right--;
+		}
+		a[hole] = a[right];
+		hole = right;
+
+		while (left < right && a[left] <= key)//左边找大的
+		{
+			left++;
+		}
+		a[hole] = a[left];
+		hole = left;
+	}
+	a[hole] = key;
+	return hole;
+}
+int part_sort3(int* a, int left, int right)//前后指针法
+{
+	//三数取中
+	int midi = GetMidIndex(a, left, right);
+	Swap(&a[midi], &a[left]);
+
+	int keyi = left;
+	int prev = left;
+	int cur = prev + 1;
+	while (cur <= right)
+	{
+		if (a[cur] < a[keyi] && ++prev != cur)
+		{
+			Swap(&a[prev], &a[cur]);
+		}
+		++cur;
+	}
+	Swap(&a[keyi], &a[prev]);
+	return prev;
+}
+
+void QuickSort(int* a, int begin, int end)
+{
+	if (begin >= end)
+		return;
+	int keyi = part_sort2(a, begin, end);
+	QuickSort(a, begin, keyi - 1);
+	QuickSort(a, keyi + 1, end);
+}
+
+//void QuickSort(int* a, int begin, int end)//小区间优化
+//{
+//	if (begin >= end)
+//		return;
+//	if (end - begin < 8)
+//	{
+//		InsertSort(a + begin, end - begin + 1);
+//	}
+//	else
+//	{
+//		int keyi = part_sort2(a, begin, end);
+//		QuickSort(a, begin, keyi - 1);
+//		QuickSort(a, keyi + 1, end);
+//	}
+//}

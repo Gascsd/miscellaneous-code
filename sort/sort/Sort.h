@@ -9,5 +9,7 @@ void PrintArr(int* a, int n);
 void HeapSort(int* a, int n);
 void ShellSort(int* a, int n);
 void SelectSort(int* a, int n);
-
+void SelectSort1(int* a, int n);//Œ¥”≈ªØ
+void BubbleSort(int* a, int n);
+void QuickSort(int* a, int begin, int end);
 

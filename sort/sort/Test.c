@@ -4,7 +4,7 @@
 void TestOP()
 {
 	srand((unsigned int)time(0));
-	const int N = 500000;
+	const int N = 1000000;
 	int* a1 = (int*)malloc(sizeof(int) * N);
 	int* a2 = (int*)malloc(sizeof(int) * N);
 	int* a3 = (int*)malloc(sizeof(int) * N);
@@ -31,7 +31,7 @@ void TestOP()
 	int end1 = clock();
 
 	int begin2 = clock();
-	ShellSort(a2, N);
+	//ShellSort(a2, N);
 	int end2 = clock();
 
 	int begin3 = clock();
@@ -43,7 +43,7 @@ void TestOP()
 	int end4 = clock();
 
 	int begin5 = clock();
-	//QuickSort(a5, 0, N - 1);
+	QuickSort(a5, 0, N - 1);
 	int end5 = clock();
 
 	int begin6 = clock();
@@ -67,18 +67,29 @@ void TestOP()
 
 void TestSort()
 {
-	int a[] = { 54,38,96,23,15,72,60,45,83 };
+	int a1[] = { 54,38,96,23,15,72,60,45,83 };
+	int a2[] = { 54,38,96,23,15,72,60,45,83 };
 	//int a[] = { 9,8,7,6,5,4,3,2,1,0 };
 	//InsertSort(a, sizeof(a) / sizeof(a[0]));
 	//HeapSort(a, sizeof(a) / sizeof(a[0]));
 	//ShellSort(a, sizeof(a) / sizeof(a[0]));
-	SelectSort(a, sizeof(a) / sizeof(a[0]));
-	PrintArr(a, sizeof(a) / sizeof(a[0]));
+	//SelectSort1(a1, sizeof(a1) / sizeof(a1[0]));
+	//PrintArr(a1, sizeof(a1) / sizeof(a1[0]));
+	//SelectSort(a2, sizeof(a2) / sizeof(a2[0]));
+	//PrintArr(a2, sizeof(a2) / sizeof(a2[0]));
+	BubbleSort(a1, sizeof(a1) / sizeof(a1[0]));
+	PrintArr(a1, sizeof(a1) / sizeof(a1[0]));
 }
 
+void TestQuicksort()
+{
+	int a1[] = { 6,1,2,7,9,3,4,5,10,8 };
+	QuickSort(a1, 0, sizeof(a1) / sizeof(a1[0]) - 1);
+	PrintArr(a1, sizeof(a1) / sizeof(a1[0]));
+}
 int main()
 {
-	TestSort();
+	TestQuicksort();
 	//TestOP();
 	return 0;
 }
