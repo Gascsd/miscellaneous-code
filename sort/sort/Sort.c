@@ -1,5 +1,6 @@
 #define _CRT_SECURE_NO_WARNINGS 1
 #include"Sort.h"
+#include"Stack.h"
 //全部排升序
 void PrintArr(int* a, int n)
 {
@@ -300,3 +301,145 @@ void QuickSort(int* a, int begin, int end)
 //		QuickSort(a, keyi + 1, end);
 //	}
 //}
+
+
+void QuickSortNonR(int* a, int left, int right)
+{
+	Stack st;
+	StackInit(&st);
+	StackPush(&st, left);
+	StackPush(&st, right);
+	while (!StackEmpty(&st))
+	{
+		int right = StackTop(&st);
+		StackPop(&st);
+		int left = StackTop(&st);
+		StackPop(&st);
+
+		if (left >= right)
+			continue;
+
+		int keyi = part_sort1(a, left, right);
+		//[left,keyi-1] keyi [keyi+1,right] 
+		StackPush(&st, keyi + 1);
+		StackPush(&st, right);
+		StackPush(&st, left);
+		StackPush(&st, keyi - 1);
+	}
+
+	StackDestory(&st);
+}
+
+void _MergeSort(int* a, int begin, int end, int* tmp)
+{
+	if (begin >= end)
+		return;
+	int mid = begin + (end - begin) / 2;
+	//[begin,mid] [mid+1,end]
+
+	_MergeSort(a, begin, mid, tmp);
+	_MergeSort(a, mid + 1, end, tmp);
+
+	//归并
+	int begin1 = begin, end1 = mid;
+	int begin2 = mid + 1, end2 = end;
+	int i = begin;
+	while (begin1 <= end1 && begin2 <= end2)
+	{
+		if (a[begin1] <= a[begin2])
+		{
+			tmp[i++] = a[begin1++];
+		}
+		else
+		{
+			tmp[i++] = a[begin2++];
+		}
+	}
+	while (begin1 <= end1)
+	{
+		tmp[i++] = a[begin1++];
+	}
+	while (begin2 <= end2)
+	{
+		tmp[i++] = a[begin2++];
+	}
+
+	//拷贝回原数组
+	memcpy(a + begin, tmp + begin, sizeof(int) * (end - begin + 1));
+}
+
+void MergeSort(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
+	{
+		perror("malloc fail");
+		exit(-1);
+	}
+
+	_MergeSort(a, 0, n - 1, tmp);
+
+	free(tmp);
+	tmp = NULL;
+}
+
+void MergeSortNonR(int* a, int n)
+{
+	int* tmp = (int*)malloc(sizeof(int) * n);
+	if (tmp == NULL)
+	{
+		perror("malloc fail");
+		exit(-1);
+	}
+	int gap = 1;
+	while (gap < n)
+	{
+		for (int j = 0; j < n; j += 2 * gap)//gap个数据归并
+		{
+			//归并
+			int begin1 = j, end1 = j + gap - 1;
+			int begin2 = j + gap, end2 = j + 2 * gap - 1;
+			int i = j;
+
+			//修正边界
+			if (end1 >= n)//第一组越界
+			{
+				break;
+			}
+			if (begin2 >= n)//第二组全部越界
+			{
+				break;
+			}
+			if (end2 >= n)//第二组部分越界
+			{
+				end2 = n - 1;
+			}
+
+			while (begin1 <= end1 && begin2 <= end2)
+			{
+				if (a[begin1] <= a[begin2])
+				{
+					tmp[i++] = a[begin1++];
+				}
+				else
+				{
+					tmp[i++] = a[begin2++];
+				}
+			}
+			while (begin1 <= end1)
+			{
+				tmp[i++] = a[begin1++];
+			}
+			while (begin2 <= end2)
+			{
+				tmp[i++] = a[begin2++];
+			}
+			memcpy(a + j, tmp + j, (end2 - j + 1) * sizeof(int));
+		}
+		gap *= 2;
+
+	}
+	free(tmp);
+	tmp = NULL;
+}
+

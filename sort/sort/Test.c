@@ -81,16 +81,19 @@ void TestSort()
 	PrintArr(a1, sizeof(a1) / sizeof(a1[0]));
 }
 
-void TestQuicksort()
+void TestMergeSort()
 {
 	int a1[] = { 6,1,2,7,9,3,4,5,10,8 };
-	QuickSort(a1, 0, sizeof(a1) / sizeof(a1[0]) - 1);
+	MergeSortNonR(a1, sizeof(a1) / sizeof(a1[0]));
 	PrintArr(a1, sizeof(a1) / sizeof(a1[0]));
-}
+}   
+
 int main()
 {
-	TestQuicksort();
+	TestMergeSort();
 	//TestOP();
 	return 0;
 }
+
+
 
