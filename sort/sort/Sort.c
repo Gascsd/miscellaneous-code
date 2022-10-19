@@ -443,3 +443,38 @@ void MergeSortNonR(int* a, int n)
 	tmp = NULL;
 }
 
+void CountSort(int* a, int n)
+{
+	int min, max;
+	max = min = a[0];
+	for (int i = 1; i < n; ++i)//找到数组中最大和最小的数
+	{
+		if (max < a[i])
+		{
+			max = a[i];
+		}
+		if (min > a[i])
+		{
+			min = a[i];
+		}
+	}
+	int range = max - min + 1;//给出映射范围
+	int* tmp = (int*)calloc(range, sizeof(int));//开辟新数组
+	assert(tmp);
+	for (int i = 0; i < n; ++i)//计数
+	{
+		tmp[a[i] - min]++;
+	}
+
+	//将计数以后的值覆盖到原数组
+	int j = 0;
+	for (int i = 0; i < n; ++i)
+	{
+		while (tmp[i]--)
+		{
+			a[j++] = i + min;
+		}
+	}
+	free(tmp);
+	tmp = NULL;
+}

@@ -81,16 +81,16 @@ void TestSort()
 	PrintArr(a1, sizeof(a1) / sizeof(a1[0]));
 }
 
-void TestMergeSort()
+void TestCountSort()
 {
 	int a1[] = { 6,1,2,7,9,3,4,5,10,8 };
-	MergeSortNonR(a1, sizeof(a1) / sizeof(a1[0]));
+	CountSort(a1, sizeof(a1) / sizeof(a1[0]));
 	PrintArr(a1, sizeof(a1) / sizeof(a1[0]));
 }   
 
 int main()
 {
-	TestMergeSort();
+	TestCountSort();
 	//TestOP();
 	return 0;
 }
