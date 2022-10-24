@@ -31,6 +31,7 @@ int my_atoi(const char* str)
 		flag = -1;
 		str++;
 	}
+
 	while (*str)
 	{
 		if (*str >= '0' && *str <= '9')
