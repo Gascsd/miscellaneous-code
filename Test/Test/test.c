@@ -191,22 +191,26 @@
 void mov(int* x, int n, int m)
 {
 	int i, j;
-	for (i = 0; i < m; i++)
-	for (j = n - 1;; j > 0; j--)
-		x[j] = x[j - 1];
-	x[0] = x[n - 1];
+	for (i = 0; i < m - 1; i++)
+	{
+		int tmp = x[n - 1];//把数组的最后一个元素记录下来，防止后面移动数组内元素的时候将原数组中的最后一个元素覆盖
+		for (j = n - 1; j > 0; j--)
+			x[j] = x[j - 1];
+		x[0] = tmp;
+	}
+
 }
 
 int main()
 {
 	int m, n, i, a[80], * p;
 	printf("Input n,m:");
-	scanf("%d%d", &m, &n);
-	for (p = a, i = 0; i < 10; i++)
-		scanf("%d", &p++);
+	scanf("%d%d", &n, &m);
+	for (p = a, i = 0; i < n; i++)
+ 		scanf("%d", p++);
 	mov(a, n, m);
 	printf("After move : ");
-	for (i = 0; i < 10; i++)
+	for (i = 0; i < n; i++) 
 	{
 		printf("%5d", a[i]);
 	}
