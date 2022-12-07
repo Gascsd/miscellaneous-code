@@ -4,7 +4,7 @@
 void TestOP()
 {
 	srand((unsigned int)time(0));
-	const int N = 1000000;
+	const int N = 100000;
 	int* a1 = (int*)malloc(sizeof(int) * N);
 	int* a2 = (int*)malloc(sizeof(int) * N);
 	int* a3 = (int*)malloc(sizeof(int) * N);
@@ -27,15 +27,15 @@ void TestOP()
 		a6[i] = a1[i];
 	}
 	int begin1 = clock();
-	//InsertSort(a1, N);
+	InsertSort(a1, N);
 	int end1 = clock();
 
 	int begin2 = clock();
-	//ShellSort(a2, N);
+	ShellSort(a2, N);
 	int end2 = clock();
 
 	int begin3 = clock();
-	//SelectSort(a3, N);
+	SelectSort(a3, N);
 	int end3 = clock();
 
 	int begin4 = clock();
@@ -47,7 +47,7 @@ void TestOP()
 	int end5 = clock();
 
 	int begin6 = clock();
-	//MergeSort(a6, N);
+	MergeSort(a6, N);
 	int end6 = clock();
 
 	printf("InsertSort:%d\n", end1 - begin1);
@@ -90,8 +90,8 @@ void TestCountSort()
 
 int main()
 {
-	TestCountSort();
-	//TestOP();
+	//TestCountSort();
+	TestOP();
 	return 0;
 }
 
