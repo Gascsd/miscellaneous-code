@@ -23,9 +23,10 @@ public:
 			allRet.push_back(curRet);
 			return;
 		}
-		//确定当前行的每个位置是否和已经确定的位置有冲突
+		
 		for (int i = 0; i < n; i++)
 		{
+			//确定当前行的每个位置是否和已经确定的位置有冲突
 			if (isValidPos(curRet, curRow, i))
 			{
 				curRet.push_back(make_pair(curRow, i));
@@ -85,8 +86,8 @@ public:
 
 	vector<vector<string>> solveNQueens(int n)
 	{
-		vector<vector<pair<int, int>>> allMat;
-		vector<pair<int, int>> curRet;
+		vector<vector<pair<int, int>>> allMat;//所有的解决方案
+		vector<pair<int, int>> curRet;//当前的解决方案
 		DFS(allMat, curRet, 0, n);
 		return transResult(allMat, n);
 	}
@@ -166,7 +167,6 @@ void solve()
 	}
 }
 
-
 int main()
 {
 	while (1)
@@ -199,7 +199,6 @@ int main()
 			system("pause");
 			system("cls");
 		}
-
 	}
 	return 0;
 }
