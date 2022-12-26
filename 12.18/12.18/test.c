@@ -299,71 +299,144 @@
 //	return 0;
 //}
 
-//3. 在一个有序数组中查找具体的某个数字n。（讲解二分查找）
+////3. 在一个有序数组中查找具体的某个数字n。（讲解二分查找）
+//#include<stdio.h>
+//#include<stdlib.h>
+//#include<assert.h>
+//#define N 100
+//int* GetArray(int n)//创建一个有序数组
+//{
+//	int* arr = (int*)malloc(10 * sizeof(int));
+//	assert(arr);
+//	for (int i = 0; i < n; i++)
+//	{
+//		arr[i] = 2 * i;
+//	}
+//	return arr;
+//}
+////0 2 4 6 8 10 12 14 16 18
+////begin      mid        end
+//int Find(int* arr,int begin,int end, int ret)//查找函数
+//{
+//	if (begin > end)
+//	{
+//		return -1;
+//	}
+//	int mid = (begin + end) / 2;
+//	if (arr[mid] == ret)
+//	{
+//		return mid;
+//	}
+//	else
+//	{
+//		if (arr[mid] > ret)
+//		{
+//			//找[begin,mid-1]
+//			Find(arr, begin, mid - 1, ret);
+//		}
+//		else
+//		{
+//			//找[mid+1,end]
+//			Find(arr, mid + 1, end, ret);
+//		}
+//	}
+//
+//}
+//int main()
+//{
+//	//int* arr = GetArray(N);
+//	int arr[] = { 1,2,4,5,6,8,10,13,15,18 };
+//	int number = 15;
+//	scanf("%d", &number);
+//	int pos = Find(arr, 0, sizeof(arr)/sizeof(arr[0]) - 1, numb	er);
+//	if (pos == -1)
+//	{
+//		printf("没有找到该数\n");
+//	}
+//	else
+//	{
+//		printf("找到了，下标为%d", pos);
+//	}
+//	return 0;
+//}
+
+
+////4. 编写代码，演示多个字符从两端移动，向中间汇聚。
+//#include<stdio.h>
+//#include<string.h>
+//#define N 15
+//int main()
+//{
+//	char arr1[N], arr2[N];
+//	//memset(arr1, '*', N-1);
+//	for (int i = 0; i < N - 1; i++)
+//	{
+//		arr1[i] = i + '0';
+//	}
+//	memset(arr2, '#', N-1);
+//	arr1[N - 1] = '\0';
+//	arr2[N - 1] = '\0';
+//	printf("%s\n", arr1);
+//	//for (int i = 0; i < N - 1; i++)
+//	//{
+//	//	printf("%d", arr1[i]);
+//	//}
+//	int left = 0;
+//	int right = sizeof(arr2) / sizeof(arr2[0]) - 2;
+//	//数组内最后一个元素的下标值 = 数组内元素个数 - 1
+//	//数组内元素个数 = 整个数组的字节数/数组内元素的大小的字节数
+//	//类型大小*元素个数 = 数组大小（数组的字节数）
+//	while (left <= right)
+//	{
+//		Sleep(1000);
+//		system("cls");
+//		arr1[left] = arr2[left];
+//		arr1[right] = arr2[right];
+//		left++;
+//		right--;
+//		printf("%s\n", arr1);
+//		//for (int i = 0; i < N - 1; i++)
+//		//{
+//		//	printf("%d", arr1[i]);
+//		//}
+//	}
+//	return 0;
+//}
+
+//5. 编写代码实现，模拟用户登录情景，并且只能登录三次。
+//（只允许输入三次密码，如果密码正确则提示登录成，如果三次均输入错误，则退出程序。
 #include<stdio.h>
-#include<stdlib.h>
-#include<assert.h>
-#define N 100
-int* GetArray(int n)//创建一个有序数组
+#include<string.h>
+int main()
 {
-	int* arr = (int*)malloc(10 * sizeof(int));
-	assert(arr);
-	for (int i = 0; i < n; i++)
+	int count = 0;
+	char user[] = "zhangsan";
+	char passwd[] = "123456";
+	char user_input[20] = { 0 }, passwd_input[20] = { 0 };
+	while (count < 3)
 	{
-		arr[i] = 2 * i;
-	}
-	return arr;
-}
-//0 2 4 6 8 10 12 14 16 18
-//begin      mid        end
-int Find(int* arr,int begin,int end, int ret)//查找函数
-{
-	if (begin > end)
-	{
-		return -1;
-	}
-	int mid = (begin + end) / 2;
-	if (arr[mid] == ret)
-	{
-		return mid;
-	}
-	else
-	{
-		if (arr[mid] > ret)
+		printf("请输入用户名：");
+		scanf("%s", user_input);
+		printf("\n请输入密码：");
+		scanf("%s", passwd_input);
+		if (0 == strcmp(passwd, passwd_input) && 0 == strcmp(user,user_input))
 		{
-			//找[begin,mid-1]
-			Find(arr, begin, mid - 1, ret);
+			printf("恭喜你，登录成功！！！\n");
+			break;
+		}
+		else if(count < 2)
+		{
+			printf("登录失败，请重新登录\n");
+			count++;
 		}
 		else
 		{
-			//找[mid+1,end]
-			Find(arr, mid + 1, end, ret);
+			printf("您已经三次登录失败，退出程序！！！\n");
+			break;
 		}
-	}
-
-}
-int main()
-{
-	//int* arr = GetArray(N);
-	int arr[] = { 1,2,4,5,6,8,10,13,15,18 };
-	int number = 15;
-	scanf("%d", &number);
-	int pos = Find(arr, 0, sizeof(arr)/sizeof(arr[0]) - 1, number);
-	if (pos == -1)
-	{
-		printf("没有找到该数\n");
-	}
-	else
-	{
-		printf("找到了，下标为%d", pos);
 	}
 	return 0;
 }
-
-
-//4. 编写代码，演示多个字符从两端移动，向中间汇聚。
-//5. 编写代码实现，模拟用户登录情景，并且只能登录三次。（只允许输入三次密码，如果密码正确则提示登录成，如果三次均输入错误，则退出程序。
-
 
 
 
