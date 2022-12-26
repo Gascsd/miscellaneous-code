@@ -403,40 +403,40 @@
 //	return 0;
 //}
 
-//5. 编写代码实现，模拟用户登录情景，并且只能登录三次。
-//（只允许输入三次密码，如果密码正确则提示登录成，如果三次均输入错误，则退出程序。
-#include<stdio.h>
-#include<string.h>
-int main()
-{
-	int count = 0;
-	char user[] = "zhangsan";
-	char passwd[] = "123456";
-	char user_input[20] = { 0 }, passwd_input[20] = { 0 };
-	while (count < 3)
-	{
-		printf("请输入用户名：");
-		scanf("%s", user_input);
-		printf("\n请输入密码：");
-		scanf("%s", passwd_input);
-		if (0 == strcmp(passwd, passwd_input) && 0 == strcmp(user,user_input))
-		{
-			printf("恭喜你，登录成功！！！\n");
-			break;
-		}
-		else if(count < 2)
-		{
-			printf("登录失败，请重新登录\n");
-			count++;
-		}
-		else
-		{
-			printf("您已经三次登录失败，退出程序！！！\n");
-			break;
-		}
-	}
-	return 0;
-}
+////5. 编写代码实现，模拟用户登录情景，并且只能登录三次。
+////（只允许输入三次密码，如果密码正确则提示登录成，如果三次均输入错误，则退出程序。
+//#include<stdio.h>
+//#include<string.h>
+//int main()
+//{
+//	int count = 0;
+//	char user[] = "zhangsan";
+//	char passwd[] = "123456";
+//	char user_input[20] = { 0 }, passwd_input[20] = { 0 };
+//	while (count < 3)
+//	{
+//		printf("请输入用户名：");
+//		scanf("%s", user_input);
+//		printf("\n请输入密码：");
+//		scanf("%s", passwd_input);
+//		if (0 == strcmp(passwd, passwd_input) && 0 == strcmp(user,user_input))
+//		{
+//			printf("恭喜你，登录成功！！！\n");
+//			break;
+//		}
+//		else if(count < 2)
+//		{
+//			printf("登录失败，请重新登录\n");
+//			count++;
+//		}
+//		else
+//		{
+//			printf("您已经三次登录失败，退出程序！！！\n");
+//			break;
+//		}
+//	}
+//	return 0;
+//}
 
 
 
