@@ -14,7 +14,7 @@ void menu()
 void game()
 {
 	printf("ÍæÓÎÏ·...\n");
-	int anchor = rand();
+	int anchor = rand() % 100 + 1;
 	int num = 0;
 	while (1)
 	{

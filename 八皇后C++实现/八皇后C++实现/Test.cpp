@@ -14,8 +14,7 @@ enum
 
 class Solution {
 public:
-	void DFS(vector<vector<pair<int, int>>>& allRet, 
-		vector<pair<int, int>>& curRet, int curRow, int n)
+	void DFS(vector<vector<pair<int, int>>>& allRet, vector<pair<int, int>>& curRet, int curRow, int n)
 	{
 		//如果每一行都没有冲突，则是一种可行的方案
 		if (curRow == n)
@@ -77,7 +76,7 @@ public:
 					second = 2 * pos.second;
 				}
 				//放入棋盘
-				curMat[pos.first][second] = '*';
+				curMat[pos.first][second] = 'Q';
 			}
 			allMat.push_back(curMat);
 		}
