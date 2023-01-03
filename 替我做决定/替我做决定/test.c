@@ -13,7 +13,7 @@ int main()
 	time(&timep);
 	p = gmtime(&timep);
 	FILE* fp = fopen("log.txt", "a+");
-	int flag = 0;
+	int flag = 0;//判断是否是只做了一次决定的标志
 	int input = 0;
 	printf("输入1来开始做决定\n输入0退出程序\n");
 	scanf("%d", &input);
