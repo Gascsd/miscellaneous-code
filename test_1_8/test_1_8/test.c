@@ -68,43 +68,43 @@
 
 //求第n个斐波那契数。（不考虑溢出）
 //1 1 2 3 5 8 13 21 34...
-typedef long long ll;
-int feb(int n)//递归法
-{
-	if (n == 1)
-		return 1;
-	if (n == 2)
-		return 1;
-	return feb(n - 1) + feb(n - 2);
-}
-int feb2(int n)//迭代法/循环法
-{
-	if (n == 1 || n == 2)
-	{
-		return 1;
-	}
-	ll a, b, c;
-	a = 1;
-	b = 1;
-	c = 2;
-	int count = 0;
-	while (count < n - 2)
-	{
-		c = a + b;
-		a = b;
-		b = c;
-		count++;
-	}
-	return c;
-}
-
-int main()
-{
-	ll ret = 0;
-	ret = feb2(50);
-	printf("%lld\n", ret);
-	return 0;
-}
+//typedef long long ll;
+//int feb(int n)//递归法
+//{
+//	if (n == 1)
+//		return 1;
+//	if (n == 2)
+//		return 1;
+//	return feb(n - 1) + feb(n - 2);
+//}
+//int feb2(int n)//迭代法/循环法
+//{
+//	if (n == 1 || n == 2)
+//	{
+//		return 1;
+//	}
+//	ll a, b, c;
+//	a = 1;
+//	b = 1;
+//	c = 2;
+//	int count = 0;
+//	while (count < n - 2)
+//	{
+//		c = a + b;
+//		a = b;
+//		b = c;
+//		count++;
+//	}
+//	return c;
+//}
+//
+//int main()
+//{
+//	ll ret = 0;
+//	ret = feb2(50);
+//	printf("%lld\n", ret);
+//	return 0;
+//}
 
 
 
@@ -114,3 +114,7 @@ int main()
 //	int b = 13;
 //	return 0;
 //}
+
+
+//1. 汉诺塔问题
+//2. 青蛙跳台阶问题
