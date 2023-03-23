@@ -8,13 +8,17 @@ using namespace std;
 
 void test_string1()
 {
-	my::string s1("hello world");
-	my::string s2(s1);
-	my::string s3 = s1;
+	zht::string s1("hello world");
+	zht::string s2(s1);
+	zht::string s3 = s1;
+}
+void test_string2()
+{
+	std::string s1;
 }
 
 int main()
 {
-	test_string1();
+	test_string2();
 	return 0;
 }
