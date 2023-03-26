@@ -22,3 +22,4 @@ int main()
 	test_string2();
 	return 0;
 }
+
