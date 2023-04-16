@@ -19,7 +19,7 @@ void test_string2()
 
 int main()
 {
-	test_string2();
+	test_string1();
 	return 0;
 }
 
