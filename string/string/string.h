@@ -14,6 +14,17 @@ namespace zht
 	istream& operator>>(istream& _cin, zht::string& s)
 	{
 		s.clear();
+		char ch = _cin.get();
+		while (ch != ' ' && ch != '\0')
+		{
+			s += ch;
+			ch = _cin.get();
+		}
+		return _cin;
+	}
+	istream& operator>>(istream& _cin, zht::string& s)
+	{
+		s.clear();
 		char buff[128] = { '\0' };
 		size_t i = 0;
 		char ch = _cin.get();
