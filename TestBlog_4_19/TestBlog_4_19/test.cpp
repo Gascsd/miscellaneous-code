@@ -124,30 +124,42 @@ void Test_list()
 
 
 
+//void Test_reserve()
+//{
+//	my::vector<string> vs;
+//	vs.reserve(5);
+//	for (int i = 0; i < 5; i++)
+//	{
+//		vs[i].
+//	}
+//}
+
+
 int main()
 {
-	vector<int> v(10);
-	for (size_t i = 0; i < 10; ++i)
-	{
-		v[i] = i;
-	}
-	vector<int>::iterator it = v.begin();
-	while (it != v.end())
-	{
-		if (*it % 2 == 0)
-		{
-			it = v.erase(it);
-		}
-		else
-		{
-			++it;
-		}
-	}
-	for (auto e : v)
-	{
-		cout << e << " ";
-	}
-	cout << endl;
+	//vector<int> v(10);
+	//for (size_t i = 0; i < 10; ++i)
+	//{
+	//	v[i] = i;
+	//}
+	//vector<int>::iterator it = v.begin();
+	//while (it != v.end())
+	//{
+	//	if (*it % 2 == 0)
+	//	{
+	//		it = v.erase(it);
+	//	}
+	//	else
+	//	{
+	//		++it;
+	//	}
+	//}
+	//for (auto e : v)
+	//{
+	//	cout << e << " ";
+	//}
+	//cout << endl;
+	Test_reserve();
 	return 0;
 }
 

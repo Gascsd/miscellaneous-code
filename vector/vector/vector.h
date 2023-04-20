@@ -10,7 +10,7 @@ namespace my
         typedef T* iterator;
         typedef const T* const_iterator;
         iterator begin()
-        {
+        {   
             return _start;
         }
         iterator end()
