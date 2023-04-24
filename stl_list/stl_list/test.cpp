@@ -4,20 +4,22 @@
 #include <list>
 #include <vector>
 #include <algorithm>
+#include "test_list.h"
+
 using namespace std;
 
 
 
 void Test_construct()
 {
-	list<int> lt1;
-	list<int> lt2(5, 2);
-	list<int> lt3(lt2.begin(), lt2.end());
-	list<int> lt4(lt3);
+	my::list<int> lt1;
+	my::list<int> lt2(5, 2);
+	//my::list<int> lt3(lt2.begin(), lt2.end());
+	my::list<int> lt4(lt2);
 }
 void Test_Iterator()
 {
-	list<int> lt;
+	zht::list<int> lt;
 	lt.push_back(1);
 	lt.push_back(2);
 	lt.push_back(3);
@@ -25,7 +27,7 @@ void Test_Iterator()
 	lt.push_back(5);
 	lt.push_back(6);
 	//д
-	list<int>::iterator it = lt.begin();
+	zht::list<int>::iterator it = lt.begin();
 	while (it != lt.end())
 	{
 		*it *= 10;
@@ -37,6 +39,11 @@ void Test_Iterator()
 	{
 		cout << *it << " ";
 		++it;
+	}
+	cout << endl;
+	for (auto e : lt)
+	{
+		cout << e << " ";
 	}
 	cout << endl;
 }
@@ -250,12 +257,24 @@ void Test_Sort()
 	}
 	cout << endl;
 }
+void Test1()
+{
+	zht::list<int> lt;
+	lt.push_back(1);
+	lt.push_back(2);
+	lt.push_back(3);
+	lt.push_back(4);
+}
 int main()
 {
-	Test_Sort();
+	//Test_Sort();
 	//Test_remove();
 	//list<int> lt = Test_insert();
 	//Test_Capacity();
+	//Test1();
+	//Test_Iterator();
+	//my::Test2();
+	Test_construct();
 	return 0;
 }
 
