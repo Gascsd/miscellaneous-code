@@ -253,6 +253,19 @@ void Test8()
 	d._c = 4;
 	d._d = 5;
 }
+class M
+{
+
+};
+class N : public M//public¼Ì³Ð
+{
+
+};
+class X//×éºÏ
+{
+public:
+	M mm;
+};
 int main()
 {
 	Test8();
