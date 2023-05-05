@@ -175,7 +175,7 @@ namespace my
 		{
 			insert(end(), val);
 		}
-		void push_front(const T& val = Y())
+		void push_front(const T& val = T())
 		{
 			insert(begin(), val);
 		}
@@ -234,4 +234,9 @@ namespace my
 		node* _head;
 		size_t _size;
 	};
+	void Test()
+	{
+		my::list<int> lt;
+		my::list<int>::const_iterator begin = lt.begin();
+	}
 }
