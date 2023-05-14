@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "65A334BC-8C5E-4C94-8CD7-7CD7F2AB3CA0"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "871830D5-412C-4D61-AA04-563BB4075EA4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVLTree/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "TestAVLTree1()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "F72BBD75-B2E6-47F4-A322-A9CF11659EF5"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVLTree/main.cpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "23"
+            endingLineNumber = "23"
+            landmarkName = "TestAVLTree1()"
+            landmarkType = "9">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "A270D171-01BF-404D-A025-8BB1AEEB7B8D"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVLTree/AVLTree.hpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "292"
+            endingLineNumber = "292"
+            landmarkName = "isBalance(root)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "A270D171-01BF-404D-A025-8BB1AEEB7B8D - be4670bd3f249b43"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVLTree&lt;int, int&gt;::isBalance(AVLTreeNode&lt;int, int&gt;*)"
+                  moduleName = "AVLTree"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zht/code/miscellaneous-code/AVLTree/AVLTree/AVLTree.hpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "284"
+                  endingLineNumber = "284"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "A270D171-01BF-404D-A025-8BB1AEEB7B8D - be4670bd3f249a81"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVLTree&lt;int, int&gt;::isBalance(AVLTreeNode&lt;int, int&gt;*)"
+                  moduleName = "AVLTree"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zht/code/miscellaneous-code/AVLTree/AVLTree/AVLTree.hpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "286"
+                  endingLineNumber = "286"
+                  offsetFromSymbolStart = "72">
+               </Location>
+               <Location
+                  uuid = "A270D171-01BF-404D-A025-8BB1AEEB7B8D - be4670bd3f24918a"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVLTree&lt;int, int&gt;::isBalance(AVLTreeNode&lt;int, int&gt;*)"
+                  moduleName = "AVLTree"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zht/code/miscellaneous-code/AVLTree/AVLTree/AVLTree.hpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "325"
+                  endingLineNumber = "325"
+                  offsetFromSymbolStart = "72">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "2BA64A56-D572-447C-9DD2-E214BF0EB1E2"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVLTree/AVLTree.hpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "272"
+            endingLineNumber = "272"
+            landmarkName = "isBSTree(root)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "2BA64A56-D572-447C-9DD2-E214BF0EB1E2 - 10d2e77804284361"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVLTree&lt;int, int&gt;::isBSTree(AVLTreeNode&lt;int, int&gt;*)"
+                  moduleName = "AVLTree"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zht/code/miscellaneous-code/AVLTree/AVLTree/AVLTree.hpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "264"
+                  endingLineNumber = "264"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "2BA64A56-D572-447C-9DD2-E214BF0EB1E2 - 10d2e778042843a3"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVLTree&lt;int, int&gt;::isBSTree(AVLTreeNode&lt;int, int&gt;*)"
+                  moduleName = "AVLTree"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zht/code/miscellaneous-code/AVLTree/AVLTree/AVLTree.hpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "266"
+                  endingLineNumber = "266"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  uuid = "2BA64A56-D572-447C-9DD2-E214BF0EB1E2 - 10d2e77804284e98"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "AVLTree&lt;int, int&gt;::isBSTree(AVLTreeNode&lt;int, int&gt;*)"
+                  moduleName = "AVLTree"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zht/code/miscellaneous-code/AVLTree/AVLTree/AVLTree.hpp"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "305"
+                  endingLineNumber = "305"
+                  offsetFromSymbolStart = "48">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9FC98DEE-5647-4458-B2E1-188458FE00EB"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVLTree/AVLTree.hpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "114"
+            endingLineNumber = "114"
+            landmarkName = "AVLTree()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "C2A29B8B-2345-4471-AB44-4C967AF0AC43"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "AVLTree/AVLTree.hpp"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "230"
+            endingLineNumber = "230"
+            landmarkName = "RotateRL(parent)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
