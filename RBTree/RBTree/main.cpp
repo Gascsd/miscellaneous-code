@@ -7,7 +7,6 @@
 
 #include <iostream>
 #include <time.h>
-#include <vector>
 #include "RBTree.hpp"
 using namespace std;
 
