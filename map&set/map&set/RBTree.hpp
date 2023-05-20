@@ -54,7 +54,27 @@ struct __RBTreeIterator
     }
     Self& operator++()
     {
-        
+        if(_node->_right)
+        {
+            Node* min = _node->_right;
+            while(min->_left)
+            {
+                min = min->_left;
+            }
+            _node = min;
+        }
+        else
+        {
+            Node* cur = _node;
+            Node* parent = _node->_parent;
+            while(parent && cur == parent->_right)
+            {
+                cur = cur->_parent;
+                parent = parent->_parent;
+            }
+            _node = parent;
+        }
+        return *this;
     }
     Self& operator--()
     {
@@ -84,7 +104,36 @@ class RBTree
 {
     typedef RBTreeNode<T> Node;
 public:
-    typedef 
+    typedef __RBTreeIterator<T, T&, T*> iterator;
+    typedef __RBTreeIterator<T, const T&, const T*> const_iterator;
+    iterator begin()
+    {
+        Node* left = _root;
+        while(left && left->_left)
+        {
+            left = left->_left;
+        }
+        return iterator(left);
+    }
+    
+    iterator end()
+    {
+        return iterator(nullptr);
+    }
+    const_iterator begin() const
+    {
+        Node* left = _root;
+        while(left && left->_left)
+        {
+            left = left->_left;
+        }
+        return const_iterator(left);
+    }
+    iterator end() const
+    {
+        return const_iterator(nullptr);
+    }
+    
     bool Insert(const T& data)
     {
         if(_root == nullptr)
@@ -99,12 +148,12 @@ public:
         //找到插入位置
         while(cur)
         {
-            if(kot(cur->_data) < kot(data.first))
+            if(kot(cur->_data) < kot(data))
             {
                 parent = cur;
                 cur = cur->_right;
             }
-            else if(kot(cur->_data) > kot(data.first))
+            else if(kot(cur->_data) > kot(data))
             {
                 parent = cur;
                 cur = cur->_left;
@@ -118,7 +167,7 @@ public:
         cur->_col = RED;
         //连接上
         cur->_parent = parent;
-        if(kot(parent->_kv) > kot(cur->_kv))
+        if(kot(parent->_data) > kot(cur->_data))
         {
             parent->_left = cur;
         }
