@@ -40,9 +40,14 @@ namespace zht
             return _t.end();
         }
         
-        bool insert(const pair<const K, V>& kv)
+        pair<iterator, bool> insert(const pair<const K, V>& kv)
         {
             return _t.Insert(kv);
+        }
+        V& operator[](const K& key)
+        {
+            pair<iterator, bool> ret = insert(make_pair(key, V()));
+            return ret.first->second;
         }
     private:
         RBTree<K, pair<const K, V>, MapKeyOfT> _t;

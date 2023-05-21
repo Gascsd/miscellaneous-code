@@ -23,10 +23,19 @@ namespace zht
         typedef typename RBTree<K, K, SetKeyOfT>::const_iterator iterator;
         typedef typename RBTree<K, K, SetKeyOfT>::const_iterator const_iterator;
     public:
-        
-        bool insert(const K& key)
+        iterator begin() const
         {
-            return _t.Insert(key);
+            return _t.begin();
+        }
+        iterator end() const
+        {
+            return _t.end();
+        }
+        pair<iterator, bool> insert(const K& key)
+        {
+            pair<typename RBTree<K, K, SetKeyOfT>::iterator, bool> ret = _t.Insert(key);
+            return pair<iterator, bool>(ret.first, ret.second);
+//            return _t.Insert(key);
         }
     private:
         RBTree<K, K, SetKeyOfT> _t;

@@ -38,10 +38,11 @@ struct __RBTreeIterator
 {
     typedef RBTreeNode<T> Node;
     typedef __RBTreeIterator<T, Ref, Ptr> Self;
+    typedef __RBTreeIterator<T, T&, T*> iterator;
     __RBTreeIterator(Node* node)
         :_node(node)
     {}
-    __RBTreeIterator(const Self& s)
+    __RBTreeIterator(const iterator& s)
         :_node(s._node)
     {}
     Ref operator*()
@@ -78,15 +79,77 @@ struct __RBTreeIterator
     }
     Self& operator--()
     {
-        
+        if(_node->_left)
+        {
+            Node* max = _node->_left;
+            while(max->_right)
+            {
+                max = max->_right;
+            }
+            _node = max;
+        }
+        else
+        {
+            Node* cur = _node;
+            Node* parent = cur->_parent;
+            while(parent && cur == parent->_right)
+            {
+                cur = cur->_parent;
+                parent = parent->_parent;
+            }
+            _node = parent;
+        }
+        return *this;
     }
     Self operator++(int)
     {
-        
+        Node* tmp = _node;
+        if(_node->_right)
+        {
+            Node* min = _node->_right;
+            while(min->_left)
+            {
+                min = min->_left;
+            }
+            _node = min;
+        }
+        else
+        {
+            Node* cur = _node;
+            Node* parent = _node->_parent;
+            while(parent && cur == parent->_right)
+            {
+                cur = cur->_parent;
+                parent = parent->_parent;
+            }
+            _node = parent;
+        }
+        return tmp;
     }
     Self operator--(int)
     {
-        
+        Node* tmp = _node;
+        if(_node->_left)
+        {
+            Node* max = _node->_left;
+            while(max->_right)
+            {
+                max = max->_right;
+            }
+            _node = max;
+        }
+        else
+        {
+            Node* cur = _node;
+            Node* parent = cur->_parent;
+            while(parent && cur == parent->_right)
+            {
+                cur = cur->_parent;
+                parent = parent->_parent;
+            }
+            _node = parent;
+        }
+        return tmp;
     }
     bool operator==(const Self& s) const
     {
@@ -129,18 +192,18 @@ public:
         }
         return const_iterator(left);
     }
-    iterator end() const
+    const_iterator end() const 
     {
         return const_iterator(nullptr);
     }
     
-    bool Insert(const T& data)
+    pair<iterator, bool> Insert(const T& data)
     {
         if(_root == nullptr)
         {
             _root = new Node(data);
             _root->_col = BLACK;
-            return true;
+            return make_pair(iterator(_root), true);
         }
         KeyOfT kot;
         Node* cur = _root;
@@ -160,10 +223,11 @@ public:
             }
             else
             {
-                return false;
+                return make_pair(iterator(cur), false);
             }
         }
         cur = new Node(data);
+        Node* newnode = cur;
         cur->_col = RED;
         //连接上
         cur->_parent = parent;
@@ -250,7 +314,7 @@ public:
             }
         }
         _root->_col = BLACK;
-        return true;
+        return make_pair(iterator(newnode), true);
     }
     void RotateL(Node* parent)//左单旋
     {
