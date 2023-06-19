@@ -15,12 +15,34 @@ class unordered_map
 {
     struct MapKeyOfT
     {
-        const K operator()()
+        const K operator()(const std::pair<const K,V>& kv)
         {
-            
+            return kv.first;
         }
     };
 public:
+    typedef typename zht::BucketHash::HashTable<K, std::pair<const K, V>, MapKeyOfT>::iterator iterator;
+    
+    //迭代器
+    iterator begin()
+    {
+        return _ht.begin();
+    }
+    iterator end()
+    {
+        return _ht.end();
+    }
+    std::pair<iterator, bool> insert(const std::pair<K, V>& data)
+    {
+        return _ht.Insert(data);
+    }
+    
+    V& operator[](const K& key)
+    {
+        //return _ht.Insert(make_pair(key, V())).first->second;
+        std::pair<iterator,bool> ret = _ht.Insert(make_pair(key, V()));
+        return ret.first->second;
+    }
     
 private:
     BucketHash::HashTable<K, std::pair<const K, V>, MapKeyOfT> _ht;
