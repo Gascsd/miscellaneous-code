@@ -10,7 +10,7 @@
 
 namespace zht
 {
-template<class K>
+template<class K class Hash>
 class unordered_set
 {
     struct SetKeyOfT
@@ -37,7 +37,7 @@ public:
     }
     
 private:
-    BucketHash::HashTable<K, K, SetKeyOfT> _ht;
+    BucketHash::HashTable<K, K, SetKeyOfT, Hash> _ht;
 };
 }
 

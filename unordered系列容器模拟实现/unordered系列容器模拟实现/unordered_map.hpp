@@ -10,7 +10,7 @@
 
 namespace zht
 {
-template<class K, class V>
+template<class K, class V, class Hash>
 class unordered_map
 {
     struct MapKeyOfT
@@ -45,6 +45,6 @@ public:
     }
     
 private:
-    BucketHash::HashTable<K, std::pair<const K, V>, MapKeyOfT> _ht;
+    BucketHash::HashTable<K, std::pair<const K, V>, MapKeyOfT, Hash> _ht;
 };
 }
