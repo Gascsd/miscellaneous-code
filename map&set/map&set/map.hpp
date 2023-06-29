@@ -1,14 +1,7 @@
-//
-//  map.hpp
-//  map&set
-//
-//  Created by zht on 2023/5/18.
-//
-
 #pragma once
 #include "RBTree.hpp"
 
-namespace zht
+namespace my
 {
     template<class K, class V>
     class map

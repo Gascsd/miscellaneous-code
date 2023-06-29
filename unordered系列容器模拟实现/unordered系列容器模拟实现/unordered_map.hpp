@@ -8,7 +8,7 @@
 #pragma once
 #include "BucketHash.hpp"
 
-namespace zht
+namespace my
 {
 template<class K, class V, class Hash>
 class unordered_map
@@ -21,7 +21,7 @@ class unordered_map
         }
     };
 public:
-    typedef typename zht::BucketHash::HashTable<K, std::pair<const K, V>, MapKeyOfT>::iterator iterator;
+    typedef typename my::BucketHash::HashTable<K, std::pair<const K, V>, MapKeyOfT>::iterator iterator;
     
     //迭代器
     iterator begin()
