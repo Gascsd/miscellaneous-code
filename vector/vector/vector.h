@@ -56,6 +56,24 @@ namespace my
             vector<T> tmp(v.cbegin(), v.cend());
             swap(tmp);
         }
+        vector(std::initializer_list<T> l)//初始化列表初始化
+        {
+            _start = new T[l.size()];
+            _finish = _start + l.size();
+            _endOfStorage = _start + l.size();
+            iterator vit = _start;
+            for (auto& e : l)
+            {
+                *vit++ = e;
+            }
+        }
+        vector<T>& operator= (std::initializer_list<T> l)//初始化列表的赋值重载
+        {
+            vector<T> tmp(l);
+            swap(tmp);
+            return *this;
+        }
+
         vector<T>& operator= (vector<T> v)
         {
             swap(v);

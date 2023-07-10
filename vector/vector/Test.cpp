@@ -159,8 +159,23 @@ void my_test8()
 	}
 	cout << endl;
 }
+void my_test9()
+{
+	my::vector<int> v = { 1,2,3,4,5 };
+	for (auto e : v)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+	v = { 6,7,8,9,10 };
+	for (auto e : v)
+	{
+		cout << e << " ";
+	}
+	cout << endl;
+}
 int main()
 {
-	my_test8();
+	my_test9();
 	return 0;
 }
