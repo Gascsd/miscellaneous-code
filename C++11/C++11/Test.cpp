@@ -89,8 +89,16 @@ void Test6()
 	int arr1[5] = { 0 };
 	array<int, 5> arr2 = { 0 };
 }
-int main()
-{
-	Test6();
-	return 0;
-}
+
+
+
+
+
+
+
+
+//int main()
+//{
+//	Test6();
+//	return 0;
+//}
