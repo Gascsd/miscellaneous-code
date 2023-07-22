@@ -23,7 +23,7 @@ namespace  zht
             :_size(strlen(str))
             , _capacity(_size)
         {
-            cout << "string(const char* str = "") -- 构造函数 " << endl;
+            // cout << "string(const char* str = "") -- 构造函数 " << endl;
             _str = new char[_capacity + 1];
             strcpy(_str, str);
         }
