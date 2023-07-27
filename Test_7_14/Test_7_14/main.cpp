@@ -61,13 +61,13 @@ void Test2()
 //    int&& r3 = std::move(a);
 //}
 
-template<class T>
-T func(const T& val)
-{
-    T ret;
-    //...
-    return ret;
-}
+//template<class T>
+//T func(const T& val)
+//{
+//    T ret;
+//    //...
+//    return ret;
+//}
 
 
 
@@ -241,7 +241,7 @@ void Test12()
         cout << e._name << " " << e._price << " " << e._evaluate << endl;
     }
     cout << endl;
-    sort(v.begin(), v.end(), [](const Goods& g1, const Goods& g2) {
+    sort(v.begin(), v.end(), [](const Goods& g1, const Goods& g2) { 
         return g1._price < g2._price; });
     cout << "sort by price" << endl;
     for (const auto& e : v)
@@ -259,8 +259,80 @@ void Test12()
     cout << endl;
 }
 
+void Test13()
+{
+    // 最简单的lambda表达式，没有任何实际意义
+    [] {};
+
+    // 省略参数列表和返回值类型，返回值类型由编译器推导为int
+    int a = 3, b = 4;
+    [=] {return a + 3; };
+
+    // 省略了返回值类型，无返回值类型
+    auto fun1 = [&](int c) {b = a + c; };//由于lambda表达式的类型是编译器自动生成的，非常复杂，所有我们使用auto来定义
+    fun1(10);
+    cout << a << " " << b << endl;
+    
+    // 各部分都很完善的lambda函数
+    auto fun2 = [=, &b](int c)->int {return b += a + c; };
+    cout << fun2(10) << endl;
+
+    // 赋值捕捉x
+    int x = 10;
+    auto add_x = [x](int a) mutable {
+        x *= 2;
+        return a + x; };
+    cout << add_x(10) << endl;
+}
+
+void Test14()
+{
+    void (*FP)();
+    auto f1 = [] { cout << "hello world" << endl; };
+    auto f2 = [] { cout << "hello world" << endl; };
+
+    //f1 = f2;//这里报错：编译失败---->提示找到不到operator=()
+
+    auto f3(f2);//允许一个lambda表达式拷贝构造一个新的副本
+    f3();
+
+    //可以将lambda表达式赋值给相同类型的函数指针
+    FP = f1;
+    FP();
+}
+
+class Add
+{
+public:
+    Add(int base)
+        :_base(base)
+    {}
+    int operator()(int num)
+    {
+        return _base + num;
+    }
+private:
+    int _base;
+};
+void Test15()
+{
+    int base = 1;
+
+    //仿函数的调用方式
+    Add add1(base);//构造一个函数对象
+    //cout << add1(10) << endl;
+    add1(10);
+
+    //lambda表达式
+    auto add2 = [base](int num)->int 
+    {
+        return base + num; 
+    };
+    //cout << add2(10) << endl;
+    add2(10);
+}
 int main()
 {
-    Test12();
+    Test15();
     return 0;
 }
