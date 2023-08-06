@@ -144,3 +144,81 @@ string to_string(int value)
     return str;
 }
 }
+
+
+// 请模拟实现红黑树的插入--注意：为了后序封装map和set，本文在实现时给红黑树多增加了一个头结点
+enum Color
+{
+    Red,
+    Black
+};
+template<class T>
+class RBTreeNode
+{
+    T _data;
+    RBTreeNode* _parent;
+    RBTreeNode* _left;
+    RBTreeNode* _right;
+    Color _color;
+    RBTreeNode(T data)
+        :_left(nullptr)
+        ,_right(nullptr)
+        ,_parent(nullptr)
+        ,_color(Black)
+    {}
+};
+template<class T>
+class RBTree
+{
+    typedef RBTreeNode<T> Node;
+public:
+    RBTree()
+    {
+        _pHead = new Node;
+        _pHead->_left = _pHead;
+        _pHead->_right = _pHead;
+    }
+
+    // 在红黑树中插入值为data的节点，插入成功返回true，否则返回false
+    // 注意：为了简单起见，本次实现红黑树不存储重复性元素
+    bool Insert(const T& data)
+    {
+        
+        if(data > _pHead->_parent->_data)
+        {
+            
+        }
+    }
+    
+    // 检测红黑树中是否存在值为data的节点，存在返回该节点的地址，否则返回nullptr
+    Node* Find(const T& data);
+    
+    // 获取红黑树最左侧节点
+    Node* LeftMost();
+    
+    // 获取红黑树最右侧节点
+    Node* RightMost();
+    
+    // 检测红黑树是否为有效的红黑树，注意：其内部主要依靠_IsValidRBTRee函数检测
+    bool IsValidRBTRee();
+private:
+    bool _IsValidRBTRee(Node* pRoot, size_t blackCount, size_t pathBlack);
+    // 左单旋
+    void RotateL(Node* pParent);
+    // 右单旋
+    void RotateR(Node* pParent);
+    // 为了操作树简单起见：获取根节点
+    Node*& GetRoot()
+    {
+        if(_pHead && _pHead->_parent)
+        {
+            return _pHead->_parent;
+        }
+        else
+        {
+            return nullptr;
+        }
+    }
+private:
+    Node* _pHead;
+};
