@@ -14,6 +14,34 @@ namespace my
 {
 
 template<typename T>
+class stack
+{
+public:
+    void push(T val)
+    {
+        _lt.push_back(val);
+    }
+    void pop()
+    {
+        _lt.pop_back();
+    }
+    T top()
+    {
+        return _lt.back();
+    }
+    bool empty()
+    {
+        return _lt.empty();
+    }
+    int size()
+    {
+        return _lt.size();
+    }
+private:
+    my::list<T> _lt;
+};
+
+template<typename T>
 class queue
 {
 public:

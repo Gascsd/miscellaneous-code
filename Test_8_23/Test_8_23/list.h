@@ -48,6 +48,30 @@ public:
         _head->_prev = newNode;
         _size++;
     }
+    void push_front(T val)
+    {
+        ListNode<T>* newNode = new ListNode<T>(val);
+        ListNode<T>* next = _head->_next;
+        // _head <=> newNode <=> next
+        _head->_next = newNode;
+        newNode->_prev = _head;
+        newNode->_next = next;
+        next->_prev = newNode;
+        ++_size;
+    }
+    void pop_back()
+    {
+        if(!empty())
+        {
+            ListNode<T>* delNode = _head->_prev;
+            ListNode<T>* prev = delNode->_prev;
+            
+            _head->_prev = prev;
+            prev->_next = _head;
+            delete delNode;
+            --_size;
+        }
+    }
     void pop_front()
     {
         if(!empty())
@@ -72,16 +96,37 @@ public:
     }
     T front()
     {
-        return _head->_next->_val;
+        if(!empty())
+            return _head->_next->_val;
+        else return 0;
     }
     T back()
     {
-        return _head->_prev->val;
+        if(!empty())
+            return _head->_prev->_val;
+        else return 0;
     }
 private:
     ListNode<T>* _head;
     int _size;
 };
+
+void test_list_pop_back()
+{
+    list<int> lt;
+    lt.push_back(1);
+    lt.push_back(2);
+    lt.push_back(3);
+    lt.push_back(4);
+    int n = 4;
+    while(n--)
+    {
+        std::cout << lt.back() << " ";
+        lt.pop_back();
+    }
+    lt.pop_back();
+    std::cout << lt.back() << " ";
+}
 
 }
 
