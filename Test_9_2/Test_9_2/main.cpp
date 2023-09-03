@@ -6,9 +6,17 @@
 //
 
 #include <iostream>
+using namespace std;
 
-int main(int argc, const char * argv[]) {
-    // insert code here...
-    std::cout << "Hello, World!\n";
+
+int fib(int n)
+{
+    if(n == 0 || n == 1) return  n;
+    return fib(n-1) + fib(n-2);
+}
+
+int main()
+{
+    cout << fib(10000) << endl;
     return 0;
 }
