@@ -42,30 +42,47 @@ private:
 //}
 
 //设计一个只能在栈上创建对象的类
+//class StackOnly
+//{
+//public:
+//    static StackOnly CreateObj()
+//    {
+//        cout << "StackOnly::CreateObj" << endl;
+//        return StackOnly();
+//    }
+//    StackOnly(const StackOnly&) = delete;
+//    //StackOnly(StackOnly&&) = delete;
+//    StackOnly operator=(const StackOnly&) = delete;
+//private:
+//    StackOnly()
+//    {}
+//
+//};
+//void test()
+//{
+//    static StackOnly obj1 = StackOnly::CreateObj();
+//}
+
+
 class StackOnly
 {
 public:
     static StackOnly CreateObj()
     {
-        cout << "StackOnly::CreateObj" << endl;
-        return StackOnly();
+       return StackOnly();
     }
-    StackOnly(const StackOnly&) = delete;
-    StackOnly(StackOnly&&) = delete;
-    StackOnly operator=(const StackOnly&) = delete;
 private:
-    StackOnly()
-    {}
-
+     StackOnly(){}
+     StackOnly(const StackOnly&) = delete;
 };
-void test()
+void test2()
 {
-    static StackOnly obj1 = StackOnly::CreateObj();
+    static StackOnly obj = StackOnly::CreateObj();
 }
 
 
 int main()
 {
-    test();
+    test2();
     return 0;
 }
