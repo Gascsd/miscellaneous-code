@@ -38,20 +38,25 @@ class A
 public:
     virtual void f() {}
     
-    int _a;
+    int _a = 1;
 };
 class B : public A
 {
 public:
-    int _b;
+    void f() {}
+    int _b = 2;
 };
 void func(A* ptr)
 {
-//    B* bptr = dynamic_cast<B*>(ptr);
-    B* bptr = (B*)ptr;
-    bptr->_b = 20;
-    bptr->_a = 10;
-    cout << bptr << endl;
+    //B* bptr = (B*)ptr;
+    B* bptr = dynamic_cast<B*>(ptr);
+    if(bptr == nullptr)
+    {
+        cout << "类型转换错误：出现向下转换" << endl;
+        return;
+    }
+    cout << bptr->_b << endl;
+    cout << bptr->_a << endl;
 }
 void test4()
 {
